@@ -1,4 +1,5 @@
 #include <iostream>
+#include <math.h>
 using namespace std;
 
 class Complex
@@ -22,6 +23,9 @@ class Complex
 
         // Overloaded unary pre increment
         friend Complex operator++(Complex &obj);
+
+        // Overload < operator
+        friend bool operator<(Complex &lo, Complex &ro);
         
 
 };
@@ -49,6 +53,20 @@ Complex operator++(Complex &obj, int)
     int temp = obj.real++;
     return Complex(temp, obj.imaginary);
 }
+
+bool operator<(Complex &lo, Complex &ro)
+{
+    double d1 = 0;
+    d1 = (lo.real)*(lo.real) + (lo.imaginary)*(lo.imaginary);
+    d1 = sqrt(d1);
+
+    double d2 = 0;
+    d2 = (ro.real)*(ro.real) + (ro.imaginary)*(ro.imaginary);
+    d2 = sqrt(d2);
+
+    return (d1<d2);
+}
+        
 
 
 
